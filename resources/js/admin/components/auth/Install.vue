@@ -66,7 +66,6 @@
                                 Install
                             </v-btn>
 
-                            <v-btn text>Cancel</v-btn>
                         </v-stepper-content>
                         <v-stepper-content step="4">
                             <v-alert type="success" :value="true">
