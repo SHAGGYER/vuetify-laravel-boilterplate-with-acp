@@ -25,10 +25,6 @@ class AdminSettingsController extends Controller
 
     public function emptyDatabase() {
       User::truncate();
-      Category::truncate();
-      Item::truncate();
-      Order::truncate();
-      OrderItem::truncate();
     }
 
     public function populateDatabaseWithTestData() {
@@ -43,45 +39,6 @@ class AdminSettingsController extends Controller
         $user->city = $faker->city;
         $user->country = $faker->country;
         $user->save();
-      }
-
-      for ($i = 0; $i < 25; $i++) {
-        $category = new Category();
-        $category->title = $faker->word;
-        $category->save();
-      }
-
-      for ($i = 0; $i < 150; $i++) {
-        $item = new Item();
-        $item->title = $faker->word;
-        $item->description = $faker->paragraph;
-        $item->price = $faker->numberBetween(3000, 12000);
-
-        $randomCategory = Category::query()->inRandomOrder()->first();
-        $item->category_id = $randomCategory->id;
-        $item->save();
-      }
-
-      for ($i = 0; $i < 50; $i++) {
-        $order = new Order();
-        $randomUser = User::query()->inRandomOrder()->first();
-        $order->user_id = $randomUser->id;
-        $order->status = 'pending';
-        $order->address = $randomUser->address;
-        $order->zip = $randomUser->zip;
-        $order->city = $randomUser->city;
-        $order->country = $randomUser->country;
-        $order->save();
-
-        for ($j = 0; $j < $faker->numberBetween(1, 5); $j++) {
-          $orderItem = new OrderItem();
-          $orderItem->order_id = $order->id;
-          $randomItem = Item::query()->inRandomOrder()->first();
-
-          $orderItem->item_id = $randomItem->id;
-          $orderItem->quantity = $faker->numberBetween(1, 4);
-          $orderItem->save();
-        }
       }
     }
 
