@@ -34,10 +34,6 @@ class AdminSettingsController extends Controller
         $user->name = $faker->name;
         $user->email = $faker->email;
         $user->password = bcrypt('testtest');
-        $user->address = $faker->streetAddress;
-        $user->zip = $faker->numberBetween(1000, 9999);
-        $user->city = $faker->city;
-        $user->country = $faker->country;
         $user->save();
       }
     }
