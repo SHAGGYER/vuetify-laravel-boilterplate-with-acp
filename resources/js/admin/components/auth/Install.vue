@@ -55,7 +55,7 @@
                         </v-stepper-content>
 
                         <v-stepper-content step="3">
-                            <v-alert color="info" :value="true">
+                            <v-alert type="info" :value="true">
                                 You are now ready to start the installation. Click Install to continue.
                             </v-alert>
 
@@ -69,7 +69,7 @@
                             <v-btn text>Cancel</v-btn>
                         </v-stepper-content>
                         <v-stepper-content step="4">
-                            <v-alert type="info" :value="true">
+                            <v-alert type="success" :value="true">
                                 You have successfully installed your store.
                             </v-alert>
 
